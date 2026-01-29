@@ -21,11 +21,14 @@ RUN apt-get update \
     && apt-get install -y --no-install-recommends \
         git \
         unzip \
+        pkg-config \
         libpng-dev \
         libjpeg-dev \
         libfreetype6-dev \
         libonig-dev \
         libzip-dev \
+        sqlite3 \
+        libsqlite3-dev \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install pdo_mysql pdo_sqlite mbstring zip gd \
     && a2enmod rewrite \
