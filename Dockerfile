@@ -10,7 +10,7 @@ RUN npm run build
 # Install PHP dependencies
 FROM composer:2.7.9 AS composer-build
 WORKDIR /app
-COPY composer.json composer.lock ./
+COPY . .
 RUN composer install --no-dev --prefer-dist --no-interaction --optimize-autoloader
 
 # Runtime image
