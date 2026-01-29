@@ -12,6 +12,15 @@ if [ ! -f /var/www/html/.env ]; then
   fi
 fi
 
+# Configure Apache to listen on Render's PORT if provided
+if [ -n "$PORT" ]; then
+  sed -ri "s/Listen 80/Listen ${PORT}/" /etc/apache2/ports.conf
+  sed -ri "s/<VirtualHost \*:80>/<VirtualHost *:${PORT}>/" /etc/apache2/sites-available/000-default.conf
+  if ! grep -q "^ServerName" /etc/apache2/apache2.conf; then
+    echo "ServerName localhost" >> /etc/apache2/apache2.conf
+  fi
+fi
+
 # Create SQLite database if needed
 if [ "$DB_CONNECTION" = "sqlite" ]; then
   if [ -z "$DB_DATABASE" ]; then
