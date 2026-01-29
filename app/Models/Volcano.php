@@ -1,0 +1,119 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+
+class Volcano extends Model
+{
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'name',
+        'country',
+        'continent',
+        'activity',
+        'latitude',
+        'longitude',
+        'elevation',
+        'description',
+        'type',
+        'image_url'
+    ];
+    
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'latitude' => 'float',
+        'longitude' => 'float',
+        'elevation' => 'integer',
+    ];
+    
+    /**
+     * Get the safe image URL attribute - directly from uploads folder.
+     *
+     * @return string
+     */
+    public function getSafeImageUrlAttribute()
+    {
+        // GitHub repository base URL
+        $githubBaseUrl = 'https://raw.githubusercontent.com/Lara-Ghi/volcanic-images/main';
+
+        // If the image_url field contains a URL, return it directly
+        if (is_string($this->image_url) && filter_var($this->image_url, FILTER_VALIDATE_URL)) {
+            return $this->image_url;
+        }
+
+        // If image_url exists, use it directly (now includes extension from database)
+        if ($this->image_url) {
+            return "{$githubBaseUrl}/{$this->image_url}";
+        }
+
+        // Fallback: return placeholder
+        return asset('images/volcanoes/placeholder.png');
+    }
+
+    public function userVolcanoes(): HasMany
+    {
+        return $this->hasMany(UserVolcano::class, 'volcanoes_id');
+    }
+
+    public function isVisitedBy($user)
+    {
+        // If no user is logged in, return false
+        if (!$user) {
+            return false;
+        }
+        
+        return $this->userVolcanoes()
+            ->where('user_id', $user->id)
+            ->where('status', 'visited')
+            ->exists();
+    }
+
+    public function isWishlistedBy($user)
+    {
+        // If no user is logged in, return false
+        if (!$user) {
+            return false;
+        }
+        
+        return $this->userVolcanoes()
+            ->where('user_id', $user->id)
+            ->where('status', 'wishlist')
+            ->exists();
+    }
+
+    // Cache needs to be cleared in order for added volcanoes to show up in the home page.
+    public static function clearCache()
+    {
+        \Illuminate\Support\Facades\Cache::forget('home_volcanoes');
+    }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        // Clear cache after creating a volcano
+        static::created(function ($model) {
+            static::clearCache();
+        });
+
+        // Clear cache after deleting a volcano
+        static::deleted(function ($model) {
+            static::clearCache();
+        });
+
+        // Clear cache after updating a volcano
+        static::updated(function ($model) {
+            static::clearCache();
+        });
+    }
+}
