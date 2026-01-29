@@ -10,6 +10,8 @@ Volcanic is a comprehensive web application for exploring and tracking volcanic 
 
 For full setup instructions, including local environment configuration, database setup, and API key requirements (for features like the Chatbot and Real-Time Activity), please refer to the [SETUP.md](SETUP.md) guide.
 
+For Render demo deployment (Docker + SQLite), see [DEPLOY.md](DEPLOY.md).
+
 ### 🔑 Login Credentials
 
 Once the application is running and seeded, you can log in with the following credentials:
