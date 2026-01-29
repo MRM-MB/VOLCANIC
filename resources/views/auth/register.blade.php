@@ -164,6 +164,9 @@
                                 <i class="fas fa-eye"></i>
                             </button>
                         </div>
+                        <small class="hint">
+                            Minimum 12 characters, with upper & lowercase, a number, and a symbol. Avoid common passwords.
+                        </small>
                     </div>
 
                     <div class="login-data form-col">
