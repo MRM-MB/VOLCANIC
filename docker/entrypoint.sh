@@ -30,7 +30,15 @@ if [ "$DB_CONNECTION" = "sqlite" ]; then
   if [ ! -f "$DB_DATABASE" ]; then
     touch "$DB_DATABASE"
   fi
+  chown -R www-data:www-data "$(dirname "$DB_DATABASE")"
+  chmod -R 775 "$(dirname "$DB_DATABASE")"
+  chown www-data:www-data "$DB_DATABASE"
+  chmod 664 "$DB_DATABASE"
 fi
+
+# Ensure Laravel writable directories at runtime
+chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
+chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
 
 # Ensure APP_KEY exists
 if [ -z "$APP_KEY" ]; then
