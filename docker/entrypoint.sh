@@ -3,6 +3,15 @@ set -e
 
 cd /var/www/html
 
+# Ensure .env exists
+if [ ! -f /var/www/html/.env ]; then
+  if [ -f /var/www/html/.env.example ]; then
+    cp /var/www/html/.env.example /var/www/html/.env
+  else
+    touch /var/www/html/.env
+  fi
+fi
+
 # Create SQLite database if needed
 if [ "$DB_CONNECTION" = "sqlite" ]; then
   if [ -z "$DB_DATABASE" ]; then
