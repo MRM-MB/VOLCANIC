@@ -96,7 +96,7 @@
                     <div class="login-data form-col">
                         <label for="date_of_birth">
                             <i class="fas fa-birthday-cake"></i>
-                            Date of Birth
+                            Date of Birth <span class="required">*</span>
                         </label>
                         <input 
                             type="date" 
@@ -104,6 +104,7 @@
                             name="date_of_birth" 
                             value="{{ old('date_of_birth') }}" 
                             autocomplete="bday"
+                            required
                             class="form-input"
                         >
                     </div>
