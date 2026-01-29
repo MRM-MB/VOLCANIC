@@ -105,7 +105,7 @@
     <!-- Content Sections -->
     <section class="content-section">
         <div class="container">
-            <div style="position: relative;">
+            <div class="home-controls" style="position: relative;">
                 <div id="sort-dropdown-container" class="sort-dropdown-container" style="position: absolute; top: 0; left: 0;">
                     <button id="sort-dropdown-btn" class="action-btn" 
                         style="border-color: #9b59b6; color: #9b59b6; min-width: 185px; justify-content: center; white-space: nowrap;"
