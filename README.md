@@ -21,6 +21,27 @@ Once the application is running and seeded, you can log in with the following cr
 | **Admin** | `admin` | `Volcanic!Demo#2026` |
 | **User** | `MarioR` | `Volcanic!User#2026` |
 
+## 🧪 Live Demo (Render)
+
+Try the hosted demo here: https://volcanic.onrender.com/
+
+### What you can do in the demo
+
+- Log in as admin or user
+- Browse volcanoes, use filters/sorting, and view profiles
+- Use the admin control dashboard to manage volcanoes, achievements, and users
+- Explore the interactive map and real-time activity (if API keys are configured)
+
+### What the demo does not include
+
+- External API features if keys are not set (Chatbot, Real-Time Activity)
+
+### Important demo notes
+
+- Demo data resets periodically (ephemeral storage). This demo is for demonstration only.
+- Free-tier deployments may sleep when idle; the first request can be slow.
+- To use external APIs, set `GEMINI_API_KEY` and `AMBEE_API_KEY` in the Render environment.
+
 ## Individual Features
 
 | Feature | Contributor | Description |
