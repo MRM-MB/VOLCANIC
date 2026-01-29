@@ -21,6 +21,8 @@ services:
         value: "true"
       - key: RUN_SEED
         value: "true"
+      - key: DEMO_VOLCANO_LIMIT
+        value: "300"
       - key: LOG_CHANNEL
         value: stderr
       - key: LOG_LEVEL
