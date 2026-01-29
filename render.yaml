@@ -5,7 +5,7 @@ services:
     plan: free
     dockerfilePath: ./Dockerfile
     autoDeploy: true
-    healthCheckPath: /
+    healthCheckPath: /health
     envVars:
       - key: APP_ENV
         value: production
@@ -20,4 +20,10 @@ services:
       - key: SESSION_SECURE_COOKIE
         value: "true"
       - key: RUN_SEED
+        value: "true"
+      - key: LOG_CHANNEL
+        value: stderr
+      - key: LOG_LEVEL
+        value: debug
+      - key: APP_DEBUG
         value: "true"
