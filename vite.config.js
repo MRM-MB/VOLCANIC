@@ -24,6 +24,7 @@ export default defineConfig({
                 'resources/js/home/interactive-map/map-display.js',
                 'resources/js/home/interactive-map/map-sync.js',
                 'resources/js/profile/profile.js',
+                'resources/js/my-volcanoes/volcano-actions.js',
                 'resources/js/my-volcanoes/panels.js'
             ],
             refresh: true,
