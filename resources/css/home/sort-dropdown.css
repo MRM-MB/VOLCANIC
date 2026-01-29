@@ -90,7 +90,7 @@
 }
 
 .home-controls {
-    padding-bottom: 70px;
+    padding-bottom: 32px;
 }
 
 /* Responsive adjustments */
@@ -100,7 +100,7 @@
     }
 
     .home-controls {
-        padding-bottom: 20px;
+        padding-bottom: 12px;
     }
     
     .sort-dropdown-menu {
