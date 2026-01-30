@@ -39,8 +39,6 @@ Try the hosted demo here: https://volcanic.onrender.com/
 ### Important demo notes
 
 - Demo data resets periodically (ephemeral storage). This demo is for demonstration only.
-- Free-tier deployments may sleep when idle; the first request can be slow.
-- To use external APIs, set `GEMINI_API_KEY` and `AMBEE_API_KEY` in the Render environment.
 
 ## Individual Features
 
