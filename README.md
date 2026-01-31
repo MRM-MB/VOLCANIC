@@ -1,18 +1,16 @@
 # Volcanic by Group 3
 
-Volcanic is a comprehensive web application for exploring and tracking volcanic activity worldwide. It combines real-time data and interactive tools to provide an engaging experience for volcano enthusiasts.
+Volcanic is a web application for exploring and tracking volcanic activity worldwide. It combines real-time data with interactive tools for a focused, educational experience.
 
 <div align="center">
   <img src="Images/volcanic.png" alt="Volcanic App" width="100%">
 </div>
 
-## 🚀 Getting Started
+## About the Project
 
-For full setup instructions, including local environment configuration, database setup, and API key requirements (for features like the Chatbot and Real-Time Activity), please refer to the [SETUP.md](SETUP.md) guide.
+Volcanic brings together volcano data, advanced search, and interactive visuals. The app includes an admin dashboard, user profiles, achievements, a real-time activity feed, and a chatbot when API keys are configured.
 
-For Render demo deployment (Docker + SQLite), see [DEPLOY.md](DEPLOY.md).
-
-### 🔑 Login Credentials
+## 🔑 Login Credentials
 
 Once the application is running and seeded, you can log in with the following credentials:
 
@@ -25,28 +23,32 @@ Once the application is running and seeded, you can log in with the following cr
 
 Try the hosted demo here: https://volcanic.onrender.com/
 
-### What you can do in the demo
+### Demo features
 
 - Log in as admin or user
-- Browse volcanoes, use filters/sorting, and view profiles
-- Use the admin control dashboard to manage volcanoes, achievements, and users
-- Explore the interactive map and real-time activity (if API keys are configured)
+- Browse volcanoes, apply filters/sorting, and view profiles
+- Use the admin dashboard to manage volcanoes, achievements, and users
+- Explore the interactive map and real-time activity (when API keys are configured)
 
-### What the demo does not include
+### Demo limitations
 
-- External API features if keys are not set (Chatbot, Real-Time Activity)
+- Demo data resets periodically (ephemeral storage).
 
-### Important demo notes
+## ✅ Two ways to run Volcanic
 
-- Demo data resets periodically (ephemeral storage). This demo is for demonstration only.
-- Free-tier deployments may sleep when idle; the first request can be slow.
-- To use external APIs, set `GEMINI_API_KEY` and `AMBEE_API_KEY` in the Render environment.
+### 1) 💻 Local development (full setup)
 
-## Individual Features
+For local environment configuration, database setup, seeding, and API key requirements, see [SETUP.md](SETUP.md).
+
+### 2) ☁️ Render deployment (Docker + SQLite)
+
+For the hosted demo deployment steps, see [DEPLOY.md](DEPLOY.md).
+
+## Features and Ownership
 
 | Feature | Contributor | Description |
 | :--- | :--- | :--- |
-| Admin Forms | [Carolina](https://github.com/chaeyrie) | Manage Volcanoes, Achievements & Users |
+| Admin Forms | [Carolina](https://github.com/chaeyrie) | Manage volcanoes, achievements, and users |
 | Chatbot | [Gabriele](https://github.com/Gabbo693) | Interactive assistant using REST API |
 | Real-Time Activity | [Luigi](https://github.com/Lucol24) | Integration of Ambee API for live data |
 | Advanced Search | Manish | Sophisticated filtering for volcanoes |
