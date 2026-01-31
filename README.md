@@ -1,6 +1,6 @@
-# Volcanic by Group 3
+# 🌋 Volcanic by Group 3
 
-Volcanic is a web application for exploring and tracking volcanic activity worldwide. It combines real-time data with interactive tools for a focused, educational experience.
+Volcanic is a comprehensive web application for exploring and tracking volcanic activity worldwide. It combines real-time data and interactive tools to provide an engaging experience for volcano enthusiasts.
 
 <div align="center">
   <img src="Images/volcanic.png" alt="Volcanic App" width="100%">
@@ -8,9 +8,11 @@ Volcanic is a web application for exploring and tracking volcanic activity world
 
 ## About the Project
 
-Volcanic brings together volcano data, advanced search, and interactive visuals. The app includes an admin dashboard, user profiles, achievements, a real-time activity feed, and a chatbot when API keys are configured.
+For full setup instructions, including local environment configuration, database setup, and API key requirements (for features like the Chatbot and Real-Time Activity), please refer to the [SETUP.md](SETUP.md) guide.
 
-## 🔑 Login Credentials
+For Render demo deployment (Docker + SQLite), see [DEPLOY.md](DEPLOY.md).
+
+### 🔑 Login Credentials
 
 Once the application is running and seeded, you can log in with the following credentials:
 
@@ -32,17 +34,9 @@ Try the hosted demo here: https://volcanic.onrender.com/
 
 ### Demo limitations
 
-- Demo data resets periodically (ephemeral storage).
-
-## ✅ Two ways to run Volcanic
-
-### 1) 💻 Local development (full setup)
-
-For local environment configuration, database setup, seeding, and API key requirements, see [SETUP.md](SETUP.md).
-
-### 2) ☁️ Render deployment (Docker + SQLite)
-
-For the hosted demo deployment steps, see [DEPLOY.md](DEPLOY.md).
+- Demo data resets periodically (ephemeral storage). This demo is for demonstration only.
+- Free-tier deployments may sleep when idle; the first request can be slow.
+- To use external APIs, set `GEMINI_API_KEY` and `AMBEE_API_KEY` in the Render environment.
 
 ## Features and Ownership
 
