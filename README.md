@@ -1,6 +1,6 @@
 # 🌋 Volcanic by Group 3
 
-Volcanic is a comprehensive web application for exploring and tracking volcanic activity worldwide. It combines real-time data and interactive tools to provide an engaging experience for volcano enthusiasts.
+Volcanic is a web application for exploring and tracking volcanic activity worldwide. It combines real-time data and interactive tools to provide an engaging experience for volcano enthusiasts.
 
 <div align="center">
   <img src="Images/volcanic.png" alt="Volcanic App" width="100%">
@@ -8,9 +8,9 @@ Volcanic is a comprehensive web application for exploring and tracking volcanic 
 
 ## About the Project
 
-For full setup instructions, including local environment configuration, database setup, and API key requirements (for features like the Chatbot and Real-Time Activity), please refer to the [SETUP.md](SETUP.md) guide.
+Volcanic brings together volcano data, advanced search, interactive maps, and user achievements in one place. The app includes admin management tools, a real-time activity feed, and an AI chatbot when API keys are configured.
 
-For Render demo deployment (Docker + SQLite), see [DEPLOY.md](DEPLOY.md).
+For local setup, database configuration, and API key requirements, see [SETUP.md](SETUP.md).
 
 ### 🔑 Login Credentials
 
@@ -34,9 +34,7 @@ Try the hosted demo here: https://volcanic.onrender.com/
 
 ### Demo limitations
 
-- Demo data resets periodically (ephemeral storage). This demo is for demonstration only.
-- Free-tier deployments may sleep when idle; the first request can be slow.
-- To use external APIs, set `GEMINI_API_KEY` and `AMBEE_API_KEY` in the Render environment.
+- Demo data resets periodically (ephemeral storage).
 
 ## Features and Ownership
 
