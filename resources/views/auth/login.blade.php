@@ -37,6 +37,14 @@
                 </div>
             @endif
 
+            <div class="alert alert-info" role="note">
+                <strong>Demo credentials</strong>
+                <ul class="mb-0">
+                    <li>Admin - Username: <code>admin</code> Password: <code>Volcanic!Demo#2026</code></li>
+                    <li>User - Username: <code>MarioR</code> Password: <code>Volcanic!User#2026</code></li>
+                </ul>
+            </div>
+
             <form action="{{ route('login.perform') }}" method="POST" novalidate class="login-form">
                 @csrf
 

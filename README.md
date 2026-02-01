@@ -35,6 +35,7 @@ Try the hosted demo here: https://volcanic.onrender.com/
 ### Demo limitations
 
 - Demo data resets periodically (ephemeral storage).
+- The demo is limited to 100 requests per month per API (Ambee and Google Gemini); once a limit is reached, the related real-time activity or chatbot features will not work.
 
 ## Features and Ownership
 
