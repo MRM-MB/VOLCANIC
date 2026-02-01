@@ -2119,6 +2119,7 @@ html {
     flex-direction: column;
     padding: 30px 20px;
     min-height: 80vh;
+    position: relative;
 }
     
 .login-container .text {
@@ -2183,9 +2184,10 @@ html {
 
 /* Demo credentials popup */
 .demo-credentials-popup {
-    position: fixed;
+    position: absolute;
     top: 120px;
-    right: 24px;
+    left: 50%;
+    transform: translateX(280px);
     width: min(360px, 90vw);
     background: #ffffff;
     border: 1px solid var(--border-color);
@@ -2254,6 +2256,16 @@ html {
     min-width: 76px;
     font-weight: 600;
     color: var(--text-primary);
+}
+
+@media (max-width: 1100px) {
+    .demo-credentials-popup {
+        position: static;
+        width: 100%;
+        margin: 0 0 1.5rem;
+        left: auto;
+        transform: none;
+    }
 }
 
 @keyframes slideDown {
@@ -2620,6 +2632,8 @@ form .signup-link span {
         margin: 0 0 1.5rem;
         top: auto;
         right: auto;
+        left: auto;
+        transform: none;
     }
 }
 
