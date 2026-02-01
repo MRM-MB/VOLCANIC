@@ -27,15 +27,15 @@ Try the hosted demo here: https://volcanic.onrender.com/
 
 ### Demo features
 
-- Log in as admin or user
+- Log in as an admin or user, or create your own user
 - Browse volcanoes, apply filters/sorting, and view profiles
 - Use the admin dashboard to manage volcanoes, achievements, and users
-- Explore the interactive map and real-time activity (when API keys are configured)
+- Explore the interactive map, chatbot, and real-time activity feed
 
 ### Demo limitations
 
-- Demo data resets periodically (ephemeral storage).
-- The demo is limited to 100 requests per month per API (Ambee and Google Gemini); once a limit is reached, the related real-time activity or chatbot features will not work.
+- Demo data is periodically reset, and newly created accounts will not persist (ephemeral storage).
+- The demo is limited to 100 requests per month per API (Ambee and Google Gemini), once a limit is reached, the related real-time activity or chatbot features will not work.
 
 ## Features and Ownership
 
