@@ -19,21 +19,22 @@
                 </button>
             </div>
             <div class="demo-credentials-body">
-                <div class="demo-credentials-row">
+                <button type="button" class="demo-credentials-row" data-username="admin" data-password="Volcanic!Demo#2026">
                     <div class="demo-credentials-role">Admin</div>
                     <div class="demo-credentials-details">
                         <div><span class="demo-credentials-label">Username</span> <code>admin</code></div>
                         <div><span class="demo-credentials-label">Password</span> <code>Volcanic!Demo#2026</code></div>
                     </div>
-                </div>
-                <div class="demo-credentials-row">
+                </button>
+                <button type="button" class="demo-credentials-row" data-username="MarioR" data-password="Volcanic!User#2026">
                     <div class="demo-credentials-role">User</div>
                     <div class="demo-credentials-details">
                         <div><span class="demo-credentials-label">Username</span> <code>MarioR</code></div>
                         <div><span class="demo-credentials-label">Password</span> <code>Volcanic!User#2026</code></div>
                     </div>
-                </div>
+                </button>
             </div>
+            <div class="demo-credentials-hint">Click a profile to auto-fill the login form.</div>
         </aside>
 
         <section class="login-card" aria-labelledby="loginTitle">
@@ -169,5 +170,24 @@
                 demoPopup.classList.add('is-hidden');
             });
         }
+
+        document.querySelectorAll('.demo-credentials-row').forEach((row) => {
+            row.addEventListener('click', () => {
+                const username = row.dataset.username;
+                const password = row.dataset.password;
+                const usernameInput = document.getElementById('username');
+                const passwordInput = document.getElementById('password');
+
+                if (usernameInput) {
+                    usernameInput.value = username;
+                    usernameInput.dispatchEvent(new Event('input', { bubbles: true }));
+                }
+
+                if (passwordInput) {
+                    passwordInput.value = password;
+                    passwordInput.dispatchEvent(new Event('input', { bubbles: true }));
+                }
+            });
+        });
     </script>
 @endsection
