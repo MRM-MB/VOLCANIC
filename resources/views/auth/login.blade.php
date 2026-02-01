@@ -37,25 +37,30 @@
                 </div>
             @endif
 
-            <div class="alert alert-info" role="note">
-                <div class="mb-2" style="font-weight: 600;">Demo credentials</div>
-                <div style="display: grid; gap: 8px;">
-                    <div style="display: grid; grid-template-columns: 90px 1fr; gap: 12px;">
-                        <div style="font-weight: 600;">Admin</div>
-                        <div>
-                            <div>Username: <code>admin</code></div>
-                            <div>Password: <code>Volcanic!Demo#2026</code></div>
+            <aside class="demo-credentials-popup" role="note" aria-live="polite">
+                <div class="demo-credentials-header">
+                    <span>Demo credentials</span>
+                    <button type="button" class="demo-credentials-close" aria-label="Dismiss demo credentials">
+                        &times;
+                    </button>
+                </div>
+                <div class="demo-credentials-body">
+                    <div class="demo-credentials-row">
+                        <div class="demo-credentials-role">Admin</div>
+                        <div class="demo-credentials-details">
+                            <div><span class="demo-credentials-label">Username</span> <code>admin</code></div>
+                            <div><span class="demo-credentials-label">Password</span> <code>Volcanic!Demo#2026</code></div>
                         </div>
                     </div>
-                    <div style="display: grid; grid-template-columns: 90px 1fr; gap: 12px;">
-                        <div style="font-weight: 600;">User</div>
-                        <div>
-                            <div>Username: <code>MarioR</code></div>
-                            <div>Password: <code>Volcanic!User#2026</code></div>
+                    <div class="demo-credentials-row">
+                        <div class="demo-credentials-role">User</div>
+                        <div class="demo-credentials-details">
+                            <div><span class="demo-credentials-label">Username</span> <code>MarioR</code></div>
+                            <div><span class="demo-credentials-label">Password</span> <code>Volcanic!User#2026</code></div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </aside>
 
             <form action="{{ route('login.perform') }}" method="POST" novalidate class="login-form">
                 @csrf
@@ -155,5 +160,14 @@
                 }
             });
         });
+
+        // demo credentials popup
+        const demoPopup = document.querySelector('.demo-credentials-popup');
+        const demoClose = document.querySelector('.demo-credentials-close');
+        if (demoPopup && demoClose) {
+            demoClose.addEventListener('click', () => {
+                demoPopup.classList.add('is-hidden');
+            });
+        }
     </script>
 @endsection

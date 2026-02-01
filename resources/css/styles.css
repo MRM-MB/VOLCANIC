@@ -2181,6 +2181,81 @@ html {
     font-size: 0.95rem;
 }
 
+/* Demo credentials popup */
+.demo-credentials-popup {
+    position: fixed;
+    top: 120px;
+    right: 24px;
+    width: min(360px, 90vw);
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-lg);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+    padding: 1rem 1.25rem;
+    z-index: 50;
+    animation: fadeInUp 0.4s ease-out;
+}
+
+.demo-credentials-popup.is-hidden {
+    display: none;
+}
+
+.demo-credentials-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.75rem;
+}
+
+.demo-credentials-close {
+    border: none;
+    background: transparent;
+    color: var(--text-secondary);
+    font-size: 1.4rem;
+    line-height: 1;
+    cursor: pointer;
+    padding: 0.15rem 0.35rem;
+    border-radius: 6px;
+}
+
+.demo-credentials-close:hover {
+    color: var(--primary-color);
+    background: rgba(187, 1, 1, 0.08);
+}
+
+.demo-credentials-body {
+    display: grid;
+    gap: 0.85rem;
+}
+
+.demo-credentials-row {
+    display: grid;
+    grid-template-columns: 70px 1fr;
+    gap: 0.75rem;
+    align-items: start;
+}
+
+.demo-credentials-role {
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.demo-credentials-details {
+    display: grid;
+    gap: 0.25rem;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+.demo-credentials-label {
+    display: inline-block;
+    min-width: 76px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
 @keyframes slideDown {
     from {
         opacity: 0;
@@ -2537,6 +2612,14 @@ form .signup-link span {
 
     form .signup-link span {
         margin-bottom: 0.5rem;
+    }
+
+    .demo-credentials-popup {
+        position: static;
+        width: 100%;
+        margin: 0 0 1.5rem;
+        top: auto;
+        right: auto;
     }
 }
 
