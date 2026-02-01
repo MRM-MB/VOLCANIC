@@ -13,15 +13,6 @@
             
             <p class="register-subtitle">Join us to explore the world's volcanoes</p>
 
-            <div class="alert alert-info" role="note">
-                <strong>Demo credentials</strong>
-                <ul class="mb-0">
-                    <li>Admin - Username: <code>admin</code> Password: <code>Volcanic!Demo#2026</code></li>
-                    <li>User - Username: <code>MarioR</code> Password: <code>Volcanic!User#2026</code></li>
-                </ul>
-                <div class="mt-2">For a quick demo, you can log in with these accounts instead of creating a new one.</div>
-            </div>
-
             {{-- Validation errors --}}
             @if ($errors->any())
                 <div class="alert alert-danger auth-error" role="alert">

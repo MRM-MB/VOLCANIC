@@ -38,11 +38,23 @@
             @endif
 
             <div class="alert alert-info" role="note">
-                <strong>Demo credentials</strong>
-                <ul class="mb-0">
-                    <li>Admin - Username: <code>admin</code> Password: <code>Volcanic!Demo#2026</code></li>
-                    <li>User - Username: <code>MarioR</code> Password: <code>Volcanic!User#2026</code></li>
-                </ul>
+                <div class="mb-2" style="font-weight: 600;">Demo credentials</div>
+                <div style="display: grid; gap: 8px;">
+                    <div style="display: grid; grid-template-columns: 90px 1fr; gap: 12px;">
+                        <div style="font-weight: 600;">Admin</div>
+                        <div>
+                            <div>Username: <code>admin</code></div>
+                            <div>Password: <code>Volcanic!Demo#2026</code></div>
+                        </div>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 90px 1fr; gap: 12px;">
+                        <div style="font-weight: 600;">User</div>
+                        <div>
+                            <div>Username: <code>MarioR</code></div>
+                            <div>Password: <code>Volcanic!User#2026</code></div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <form action="{{ route('login.perform') }}" method="POST" novalidate class="login-form">
