@@ -19,18 +19,18 @@
                 </button>
             </div>
             <div class="demo-credentials-body">
-                <button type="button" class="demo-credentials-row" data-username="admin" data-password="Volcanic!Demo#2026">
+                <button type="button" class="demo-credentials-row" data-username="admin">
                     <div class="demo-credentials-role">Admin</div>
                     <div class="demo-credentials-details">
                         <div><span class="demo-credentials-label">Username</span> <code>admin</code></div>
-                        <div><span class="demo-credentials-label">Password</span> <code>Volcanic!Demo#2026</code></div>
+                        <div><span class="demo-credentials-label">Password</span> <span>Ask the team for access</span></div>
                     </div>
                 </button>
-                <button type="button" class="demo-credentials-row" data-username="MarioR" data-password="Volcanic!User#2026">
+                <button type="button" class="demo-credentials-row" data-username="MarioR">
                     <div class="demo-credentials-role">User</div>
                     <div class="demo-credentials-details">
                         <div><span class="demo-credentials-label">Username</span> <code>MarioR</code></div>
-                        <div><span class="demo-credentials-label">Password</span> <code>Volcanic!User#2026</code></div>
+                        <div><span class="demo-credentials-label">Password</span> <span>Ask the team for access</span></div>
                     </div>
                 </button>
             </div>
@@ -174,7 +174,6 @@
         document.querySelectorAll('.demo-credentials-row').forEach((row) => {
             row.addEventListener('click', () => {
                 const username = row.dataset.username;
-                const password = row.dataset.password;
                 const usernameInput = document.getElementById('username');
                 const passwordInput = document.getElementById('password');
 
@@ -184,8 +183,7 @@
                 }
 
                 if (passwordInput) {
-                    passwordInput.value = password;
-                    passwordInput.dispatchEvent(new Event('input', { bubbles: true }));
+                    passwordInput.focus();
                 }
             });
         });
