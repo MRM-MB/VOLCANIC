@@ -21,7 +21,7 @@ Once the application is running and seeded, you can log in with the following cr
 | **Admin** | `admin` | `Volcanic!Demo#2026` |
 | **User** | `MarioR` | `Volcanic!User#2026` |
 
-## 🧪 Live Demo (Render)
+## 🧪 Live Demo
 
 Try the hosted demo here: https://volcanic.onrender.com/
 
