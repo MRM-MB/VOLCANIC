@@ -11,32 +11,6 @@
 @section('content')
     <!-- Log In -->
     <main class="login-container">
-        <aside class="demo-credentials-popup" role="note" aria-live="polite">
-            <div class="demo-credentials-header">
-                <span>Demo credentials</span>
-                <button type="button" class="demo-credentials-close" aria-label="Dismiss demo credentials">
-                    &times;
-                </button>
-            </div>
-            <div class="demo-credentials-body">
-                <button type="button" class="demo-credentials-row" data-username="admin">
-                    <div class="demo-credentials-role">Admin</div>
-                    <div class="demo-credentials-details">
-                        <div><span class="demo-credentials-label">Username</span> <code>admin</code></div>
-                        <div><span class="demo-credentials-label">Password</span> <span>Ask the team for access</span></div>
-                    </div>
-                </button>
-                <button type="button" class="demo-credentials-row" data-username="MarioR">
-                    <div class="demo-credentials-role">User</div>
-                    <div class="demo-credentials-details">
-                        <div><span class="demo-credentials-label">Username</span> <code>MarioR</code></div>
-                        <div><span class="demo-credentials-label">Password</span> <span>Ask the team for access</span></div>
-                    </div>
-                </button>
-            </div>
-            <div class="demo-credentials-hint">Click a profile to auto-fill the login form.</div>
-        </aside>
-
         <section class="login-card" aria-labelledby="loginTitle">
             <div class="text">
                 🌋 Log In
@@ -62,6 +36,10 @@
                     </div>
                 </div>
             @endif
+
+            <div class="demo-credentials-note" role="note">
+                Demo login details are listed on GitHub for testing: <a href="https://github.com/MRM-MB/VOLCANIC" target="_blank" rel="noopener noreferrer">https://github.com/MRM-MB/VOLCANIC</a>
+            </div>
 
             <form action="{{ route('login.perform') }}" method="POST" novalidate class="login-form">
                 @csrf
@@ -162,30 +140,5 @@
             });
         });
 
-        // demo credentials popup
-        const demoPopup = document.querySelector('.demo-credentials-popup');
-        const demoClose = document.querySelector('.demo-credentials-close');
-        if (demoPopup && demoClose) {
-            demoClose.addEventListener('click', () => {
-                demoPopup.classList.add('is-hidden');
-            });
-        }
-
-        document.querySelectorAll('.demo-credentials-row').forEach((row) => {
-            row.addEventListener('click', () => {
-                const username = row.dataset.username;
-                const usernameInput = document.getElementById('username');
-                const passwordInput = document.getElementById('password');
-
-                if (usernameInput) {
-                    usernameInput.value = username;
-                    usernameInput.dispatchEvent(new Event('input', { bubbles: true }));
-                }
-
-                if (passwordInput) {
-                    passwordInput.focus();
-                }
-            });
-        });
     </script>
 @endsection
