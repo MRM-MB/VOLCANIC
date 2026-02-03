@@ -37,10 +37,6 @@
                 </div>
             @endif
 
-            <div class="demo-credentials-note" role="note">
-                Demo login details are listed on GitHub for testing: <a href="https://github.com/MRM-MB/VOLCANIC" target="_blank" rel="noopener noreferrer">https://github.com/MRM-MB/VOLCANIC</a>
-            </div>
-
             <form action="{{ route('login.perform') }}" method="POST" novalidate class="login-form">
                 @csrf
 
