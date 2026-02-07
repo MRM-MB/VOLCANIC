@@ -1,5 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     const modal = document.getElementById('volcano-modal');
+    let activeRequestId = 0;
+    let activeController = null;
     
     // Check if modal exists
     if (!modal) {
@@ -52,22 +54,35 @@ document.addEventListener('DOMContentLoaded', function() {
     async function openVolcanoModal(volcanoId) {
         try {
             console.log('Opening modal for volcano:', volcanoId);
+
+            activeRequestId += 1;
+            const requestId = activeRequestId;
+
+            if (activeController) {
+                activeController.abort();
+            }
+            activeController = new AbortController();
             
             // Show loading state
             modal.classList.remove('hidden');
             document.body.style.overflow = 'hidden';
             
-            // Reset content
-            const descElement = document.getElementById('modal-volcano-description');
-            if (descElement) {
-                descElement.textContent = 'Loading volcano details...';
-            }
+            resetModalContent();
 
             // Fetch volcano data
-            const response = await fetch(`/api/volcanoes/${volcanoId}`);
+            const response = await fetch(`/api/volcanoes/${volcanoId}`, {
+                signal: activeController.signal
+            });
+            if (!response.ok) {
+                throw new Error('Failed to load volcano details');
+            }
             const data = await response.json();
 
             console.log('API Response:', data);
+
+            if (requestId !== activeRequestId) {
+                return;
+            }
 
             if (data.success) {
                 populateModal(data.volcano);
@@ -75,8 +90,40 @@ document.addEventListener('DOMContentLoaded', function() {
                 showError('Failed to load volcano details');
             }
         } catch (error) {
+            if (error.name === 'AbortError') {
+                return;
+            }
             console.error('Error fetching volcano data:', error);
             showError('Error loading volcano information');
+        }
+    }
+
+    function resetModalContent() {
+        const placeholders = {
+            'modal-volcano-name': 'Loading...',
+            'modal-volcano-description': 'Loading volcano details...',
+            'modal-volcano-latitude': '--',
+            'modal-volcano-longitude': '--',
+            'modal-volcano-continent': '--'
+        };
+
+        Object.keys(placeholders).forEach(id => {
+            const element = document.getElementById(id);
+            if (element) {
+                element.textContent = placeholders[id];
+            }
+        });
+
+        const modalImage = document.getElementById('modal-volcano-image');
+        if (modalImage) {
+            modalImage.src = '/images/volcanoes/placeholder.png';
+            modalImage.alt = 'Loading volcano image';
+            modalImage.style.opacity = '0.5';
+        }
+
+        const askAiBtn = document.getElementById('ask-ai-about-volcano');
+        if (askAiBtn) {
+            askAiBtn.disabled = true;
         }
     }
 
@@ -158,6 +205,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Ask AI button
     const askAiBtn = document.getElementById('ask-ai-about-volcano');
     if (askAiBtn) {
+        askAiBtn.disabled = false;
         askAiBtn.onclick = function() {
             openChatWithPrompt(`Could you tell me more about ${volcano.name}?`);
             closeModal(); 
@@ -175,6 +223,11 @@ document.addEventListener('DOMContentLoaded', function() {
         const descElement = document.getElementById('modal-volcano-description');
         if (descElement) {
             descElement.textContent = message;
+        }
+
+        const askAiBtn = document.getElementById('ask-ai-about-volcano');
+        if (askAiBtn) {
+            askAiBtn.disabled = true;
         }
     }
 });

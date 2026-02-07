@@ -1,3 +1,5 @@
+let isSendingMessage = false;
+
 async function askGemini(prompt) {
   const response = await fetch("/api/gemini", {
     method: "POST",
@@ -7,65 +9,72 @@ async function askGemini(prompt) {
     body: JSON.stringify({ prompt }),
   });
 
+  if (!response.ok) {
+    throw new Error("Failed to fetch AI response");
+  }
+
   const data = await response.json();
   return data.candidates?.[0]?.content?.parts?.[0]?.text || "I couldn't generate a reply.";
 }
 
+function appendMessage(chatBox, type, text, isLoading = false) {
+  const wrapper = document.createElement("div");
+  wrapper.className = type + (isLoading ? " loading" : "");
+
+  const paragraph = document.createElement("p");
+  paragraph.textContent = text;
+  wrapper.appendChild(paragraph);
+
+  chatBox.appendChild(wrapper);
+  chatBox.scrollTop = chatBox.scrollHeight;
+
+  return wrapper;
+}
+
 async function sendMessage() {
+  if (isSendingMessage) {
+    return;
+  }
+
   const input = document.querySelector(".chat-window input");
   const chatBox = document.querySelector(".chat-window .chat");
+  const sendButton = document.querySelector(".chat-window .input-area button");
   const userMessage = input.value.trim();
 
-  if (userMessage.length) {
-    input.value = "";
-    chatBox.insertAdjacentHTML("beforeend", `
-      <div class="user">
-        <p>${userMessage}</p>
-      </div>
-    `);
+  if (!userMessage.length) {
+    return;
+  }
 
-    // Auto-scroll after user message
-    chatBox.scrollTop = chatBox.scrollHeight;
+  input.value = "";
+  appendMessage(chatBox, "user", userMessage);
 
-    // Show loading indicator
-    chatBox.insertAdjacentHTML("beforeend", `
-      <div class="ai loading">
-        <p>Thinking...</p>
-      </div>
-    `);
+  isSendingMessage = true;
+  input.disabled = true;
+  if (sendButton) {
+    sendButton.disabled = true;
+  }
 
-    // Auto-scroll after loading indicator
-    chatBox.scrollTop = chatBox.scrollHeight;
+  const loadingElem = appendMessage(chatBox, "ai", "Thinking...", true);
 
-    try {
-      const aiReply = await askGemini(userMessage);
+  try {
+    const aiReply = await askGemini(userMessage);
 
-      // Remove loading indicator
-      const loadingElem = chatBox.querySelector(".ai.loading");
-      if (loadingElem) loadingElem.remove();
-
-      chatBox.insertAdjacentHTML("beforeend", `
-        <div class="ai">
-          <p>${aiReply}</p>
-        </div>
-      `);
-
-      // Auto-scroll after AI reply
-      chatBox.scrollTop = chatBox.scrollHeight;
-
-    } catch (err) {
-      const loadingElem = chatBox.querySelector(".ai.loading");
-      if (loadingElem) loadingElem.remove();
-
-      chatBox.insertAdjacentHTML("beforeend", `
-        <div class="ai error">
-          <p>Sorry, something went wrong.</p>
-        </div>
-      `);
-
-      // Auto-scroll after error message
-      chatBox.scrollTop = chatBox.scrollHeight;
+    if (loadingElem) {
+      loadingElem.remove();
     }
+    appendMessage(chatBox, "ai", aiReply);
+  } catch (err) {
+    if (loadingElem) {
+      loadingElem.remove();
+    }
+    appendMessage(chatBox, "ai error", "Sorry, something went wrong.");
+  } finally {
+    isSendingMessage = false;
+    input.disabled = false;
+    if (sendButton) {
+      sendButton.disabled = false;
+    }
+    input.focus();
   }
 }
 
@@ -77,6 +86,7 @@ function openChatWithPrompt(prompt) {
     // Set the input value
     const input = document.querySelector(".chat-window input");
     input.value = prompt;
+  input.focus();
     
     // Automatically send the message
     sendMessage();
@@ -110,6 +120,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // Send message on Enter key press
     document.querySelector(".chat-window .input-area input").addEventListener("keypress", function(e) {
         if (e.key === "Enter") {
+        e.preventDefault();
             sendMessage();
         }
     });
