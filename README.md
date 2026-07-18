@@ -1,4 +1,4 @@
-# 🌋 Volcanic by Group 3
+# 🌋 Volcanic: Explore What's Erupting
 
 Volcanic is a web application for exploring and tracking volcanic activity worldwide. It combines real-time data and interactive tools to provide an engaging experience for volcano enthusiasts.
 
